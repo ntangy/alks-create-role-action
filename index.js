@@ -44,7 +44,7 @@ async function run() {
             roleName: roleName,
             roleType: roleType,
             enableAlksAccess: false,
-            includeDefaultPolicy: false,
+            includeDefaultPolicy: 0,
         });
 
         console.log(createdRole);
