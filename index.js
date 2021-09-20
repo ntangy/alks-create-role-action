@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const ALKS = require('alks.js');
+const fetch = require('node-fetch');
 
 const ALKS_BASE_URL = 'https://alks.coxautoinc.com/rest';
 
@@ -19,7 +20,6 @@ async function run() {
             secretKey: secretAccessKey,
             sessionToken: sessionToken,
         });
-        // infer acc info form STS creds can do by calling alks loginrole/id/me no alks.js do it directly
         const response = await fetch(ALKS_BASE_URL + "/loginRoles/id/me", {
             method: 'GET',
             headers: {
