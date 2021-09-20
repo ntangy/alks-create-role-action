@@ -27,7 +27,7 @@ inputs:
     required: false
 outputs:
   arn: # id of output
-    description: 'The arn of the created role's arn.'
+    description: 'The arn of the created roles arn.'
 runs:
   using: 'node12'
   main: 'index.js'
