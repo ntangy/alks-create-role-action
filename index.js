@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const ALKS = require('alks.js');
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 const ALKS_BASE_URL = 'https://alks.coxautoinc.com/rest';
 
@@ -20,7 +20,7 @@ async function run() {
             secretKey: secretAccessKey,
             sessionToken: sessionToken,
         });
-        const response = await fetch(ALKS_BASE_URL + "/loginRoles/id/me", {
+        const response = await axios.get(ALKS_BASE_URL + "/loginRoles/id/me", {
             method: 'GET',
             headers: {
                 'ALKS-STS-Access-Key': accessKeyId,
@@ -28,10 +28,10 @@ async function run() {
                 'ALKS-STS-Session-Token': sessionToken,
             }
         });
-        if(!response.ok) {
+        if(response.status != 200) {
             throw new Error('Could not validate STS credentials/could not be recognized by ALKS')
         }
-        const data = await response.json();
+        const data = response.data;
         const account = data.loginRole.account;
         const role = data.loginRole.role;
         const alias = data.loginRole.skypieaAccount.alias;
