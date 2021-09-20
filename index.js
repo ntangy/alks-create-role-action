@@ -38,8 +38,18 @@ async function run() {
 
         console.log(account, role, alias);
     
-        // let createdRole = await alks.createRole({
-        // });
+        let createdRole = await alks.createRole({
+            account: account,
+            role: role,
+            roleName: roleName,
+            roleType: roleType,
+            enableAlksAccess: false,
+            includeDefaultPolicy: false,
+        });
+
+        console.log(createdRole);
+        const arn = createdRole.roleArn;
+        core.setOutput('arn', arn);
     
     } catch (error) {
         core.setFailed(error.message)
