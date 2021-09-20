@@ -7,6 +7,24 @@ inputs:
   role-name:  # id of input
     description: 'The name of the IAM role.'
     required: true
+  aws-access-key-id:
+    description: >-
+      AWS Access Key ID. This input is required if running using enterprise hosted runners, 
+      it is optional if running in a self hosted environment that already has AWS credentials
+      and it is registered as a Machine Identity with ALKS.
+    required: false
+  aws-secret-access-key:
+    description: >-
+      AWS Secret Access Key. This input is required if running using enterprise hosted runners, 
+      it is optional if running in a self hosted environment that already has AWS credentials
+      and it is registered as a Machine Identity with ALKS.
+    required: false
+  aws-session-token:
+    description: >-
+      AWS Session Token. This input is required if running using enterprise hosted runners, 
+      it is optional if running in a self hosted environment that already has AWS credentials
+      and it is registered as a Machine Identity with ALKS.
+    required: false
 outputs:
   arn: # id of output
     description: 'The arn of the created role's arn.'
