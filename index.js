@@ -13,6 +13,8 @@ async function run() {
         const sessionToken = core.getInput('aws-session-token', { required: false });
         const roleType = core.getInput('role-type', { required: true });
         const roleName = core.getInput('role-name', { required: true });
+        const enableMachineIdentity = core.getBooleanInput('enable-machine-identity', { required: false });
+        const includeDefaultPolicy = core.getBooleanInput('include-default-policy', { required: false });
     
         const alks = ALKS.create({
             baseUrl: ALKS_BASE_URL,
@@ -43,8 +45,8 @@ async function run() {
             role: role,
             roleName: roleName,
             roleType: roleType,
-            enableAlksAccess: false,
-            includeDefaultPolicy: 0,
+            enableAlksAccess: enableMachineIdentity,
+            includeDefaultPolicy: includeDefaultPolicy ? 1 : 0,
         });
 
         console.log(createdRole);

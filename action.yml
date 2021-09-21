@@ -7,6 +7,14 @@ inputs:
   role-name:  # id of input
     description: 'The name of the IAM role.'
     required: true
+  enable-machine-identity:
+    description: 'Enable ALKS access via the created IAM role'
+    required: false
+    default: 'false'
+  include-default-policy:
+    description: 'Include the default policies attached to the role'
+    required: false
+    default: 'false'
   aws-access-key-id:
     description: >-
       AWS Access Key ID. This input is required if running using enterprise hosted runners, 
@@ -27,7 +35,7 @@ inputs:
     required: false
 outputs:
   arn: # id of output
-    description: 'The arn of the created roles arn.'
+    description: 'The arn of the created role.'
 runs:
   using: 'node12'
   main: 'index.js'
