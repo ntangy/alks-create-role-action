@@ -51,11 +51,11 @@ The STS credentials must either be coming from a Machine Identity or they must h
 
 ### `enable-machine-identity`
 
-**Required** Enable IAM role to have ALKS access. Default `"false"`.
+Enable IAM role to have ALKS access. Default `"false"`.
 
 ### `include-default-policy`
 
-**Required** Include the default policies in the role. Default `"false"`.
+Include the default policies in the role. Default `"false"`.
 
 
 ## Outputs

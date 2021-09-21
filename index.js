@@ -36,9 +36,6 @@ async function run() {
         const data = response.data;
         const account = data.loginRole.account;
         const role = data.loginRole.role;
-        const alias = data.loginRole.skypieaAccount.alias;
-
-        console.log(account, role, alias);
     
         let createdRole = await alks.createRole({
             account: account,
@@ -49,9 +46,10 @@ async function run() {
             includeDefaultPolicy: includeDefaultPolicy ? 1 : 0,
         });
 
-        console.log(createdRole);
         const arn = createdRole.roleArn;
         core.setOutput('arn', arn);
+
+        console.log(`Created role ${roleName}, arn: ${arn}`);
     
     } catch (error) {
         core.setFailed(error.message)
